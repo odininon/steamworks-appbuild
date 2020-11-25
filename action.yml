@@ -1,0 +1,32 @@
+name: 'workshop-upload'
+description: 'Upload to Steam workshop'
+
+branding:
+  icon: arrow-up
+  color: gray-dark
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.appId }}
+    - ${{ inputs.depotId }}
+    - ${{ inputs.contentPath }}
+    - ${{ inputs.changelog }}
+
+inputs:
+  appId:
+    description: 'App id'
+    required: false
+    default: '1398840'
+  depotId:
+    description: 'Depot id'
+    required: false
+    default: '1398841'
+  changelog:
+    description: 'Changelog'
+    required: false
+    default: 'testing builds'
+  contentPath:
+    description: 'Path of folder to upload'
+    required: true
